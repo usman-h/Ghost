@@ -257,8 +257,8 @@ public class AutoSmart {
             ArrayList<String> result = new ArrayList<String>();
             for (int i = 0; i < cucumberErrorString.size(); i++) {
                 if (cucumberErrorString.get(i).get(1).replaceAll("\\s+", "").contains(HTMLFile.getName().split(".html")[0])) {
-                    if (cucumberErrorString.get(i).get(2).contains("NoSuchElementException")) {
-                        String domTypeAndValue[] = cucumberErrorString.get(i).get(2).split(":");
+                    String domTypeAndValue[] = cucumberErrorString.get(i).get(2).split(":");
+                    if (domTypeAndValue[1].contains("NoSuchElementException")) {
                         String domTypeAndValuesplit[] = domTypeAndValue[5].split("\"");
                         String domTypeAndValuesplit2[] = domTypeAndValue[6].split("\"");
                         if (domTypeAndValuesplit[1].equalsIgnoreCase("id")) {
@@ -272,6 +272,11 @@ public class AutoSmart {
                         } else if (domTypeAndValuesplit[1].equalsIgnoreCase("css")) {
                             //TODO: Code need to be update
                         }
+                    }
+                    else {
+                        //For other than "NoSuchElementException" like "Unable to locate element"
+                        result.add(HTMLFile.getName().split(".html")[0]);
+                        result.add(" Need to be verified manually");
                     }
                 }
             }
