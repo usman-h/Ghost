@@ -24,7 +24,7 @@
 
     <groupId>com.usmanhussain.ghost</groupId>
     <artifactId>Ghost</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <packaging>jar</packaging>
     <name>com.usmanhussain.ghost:Ghost</name>
     <url>https://github.com/usman-h/Ghost</url>
