@@ -272,8 +272,7 @@ public class AutoSmart {
                         } else if (domTypeAndValuesplit[1].equalsIgnoreCase("css")) {
                             //TODO: Code need to be update
                         }
-                    }
-                    else {
+                    } else {
                         //For other than "NoSuchElementException" like "Unable to locate element"
                         result.add(HTMLFile.getName().split(".html")[0]);
                         result.add(" Need to be verified manually");
@@ -291,8 +290,18 @@ public class AutoSmart {
             String cucumberJson = FileUtils.readFileToString(jsonFile);
             JSONParser jp = new JSONParser();
             JSONArray parsedTargetJSON = (JSONArray) jp.parse(cucumberJson);
-            JSONObject file = (JSONObject) parsedTargetJSON.get(0);
-            JSONArray elements = (JSONArray) file.get("elements");
+            JSONArray elements = new JSONArray();
+//            JSONObject file = (JSONObject) parsedTargetJSON.get(1);
+//            JSONArray elements = (JSONArray) file.get("elements");
+
+            for (int i = 0; i < parsedTargetJSON.size(); i++) {
+                JSONObject file1 = (JSONObject) parsedTargetJSON.get(i);
+                JSONArray elements1 = (JSONArray) file1.get("elements");
+                for (int j = 0; j < elements1.size(); j++) {
+                    elements.add(elements1.get(j));
+                }
+            }
+
             for (ArrayList<String> errors : failureList) {
                 for (int i = 0; i < elements.size(); i++) {
                     JSONObject scenario = (JSONObject) elements.get(i);
