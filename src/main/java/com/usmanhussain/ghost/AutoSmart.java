@@ -1,5 +1,7 @@
 package com.usmanhussain.ghost;
 
+import com.usmanhussain.habanero.context.TestContext;
+import com.usmanhussain.habanero.framework.StepDefs;
 import de.sstoehr.harreader.HarReader;
 import de.sstoehr.harreader.model.Har;
 import de.sstoehr.harreader.model.HarEntry;
@@ -26,9 +28,13 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AutoSmart {
+public class AutoSmart extends StepDefs {
 
     private static String errorLogsFile = "Exceptions.xlsx";
+
+    public AutoSmart(TestContext context) {
+        super(context);
+    }
 
     public static void main(String[] args) throws Throwable {
         File myFile = new File("target/Exceptions.xlsx");
