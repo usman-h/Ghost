@@ -133,6 +133,8 @@ public class AutoSmart extends StepDefs {
                 os.close();
             }
         } catch (IndexOutOfBoundsException e) {
+        }catch (Exception e){
+
         }
     }
 
